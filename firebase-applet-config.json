@@ -1,0 +1,12 @@
+{
+  "projectId": "finshield-sih",
+  "appId": "1:806427799890:web:9c01a4ff08698e37078a8b",
+  "apiKey": "AIzaSyCcbDz57Xfv5uxORESCOJ9gJGGi-EGy0VE",
+  "authDomain": "finshield-sih.firebaseapp.com",
+  "firestoreDatabaseId": "(default)",
+  "storageBucket": "finshield-sih.firebasestorage.app",
+  "messagingSenderId": "806427799890",
+  "measurementId": "",
+  "oAuthClientId": "806427799890-5dif31i45ilie5n6k70lq1aro6fsfkgk.apps.googleusercontent.com",
+  "recaptchaSiteKey": ""
+}

@@ -1,0 +1,65 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper function to check strict user ownership (applies to both registered and anonymous authenticated users)
+    function isOwner(userId) {
+      return request.auth != null && request.auth.uid == userId;
+    }
+
+    // User documents and their isolated subcollections
+    match /users/{userId} {
+      allow read, write: if isOwner(userId);
+
+      match /profile/{profileId} {
+        allow read, write: if isOwner(userId);
+      }
+
+      match /profiles/{profileId} {
+        allow read, write: if isOwner(userId);
+      }
+
+      match /financial_data/{docId} {
+        allow read, write: if isOwner(userId);
+      }
+
+      match /transactions/{txId} {
+        allow read, write: if isOwner(userId);
+      }
+
+      match /goals/{goalId} {
+        allow read, write: if isOwner(userId);
+      }
+
+      match /consent/{consentId} {
+        allow read, write: if isOwner(userId);
+      }
+
+      match /consent_sources/{sourceId} {
+        allow read, write: if isOwner(userId);
+      }
+
+      match /disputes/{disputeId} {
+        allow read, write: if isOwner(userId);
+      }
+
+      match /audit_trail/{auditId} {
+        allow read, write: if isOwner(userId);
+      }
+
+      match /coaching_sessions/{sessionId} {
+        allow read, write: if isOwner(userId);
+      }
+
+      match /{allSubcollections=**} {
+        allow read, write: if isOwner(userId);
+      }
+    }
+
+    // Public configurations / reference collections if needed
+    match /public/{document=**} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+  }
+}

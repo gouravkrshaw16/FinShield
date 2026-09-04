@@ -1,0 +1,126 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User account and root document",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id"]
+    },
+    "Profile": {
+      "title": "Profile",
+      "description": "Financial persona profile containing cash flow, debt, and score breakdown",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "personaType": { "type": "string", "enum": ["student", "micro-entrepreneur", "gig-worker", "custom"] },
+        "monthlyInflow": { "type": "number" },
+        "monthlyOutflow": { "type": "number" },
+        "emergencyFund": { "type": "number" },
+        "existingDebtObligations": { "type": "number" },
+        "ownerId": { "type": "string" }
+      },
+      "required": ["id", "name", "personaType", "ownerId"]
+    },
+    "Transaction": {
+      "title": "Transaction",
+      "description": "Cashflow transaction record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "type": { "type": "string", "enum": ["inflow", "outflow"] },
+        "category": { "type": "string" },
+        "amount": { "type": "number" },
+        "isRecurring": { "type": "boolean" },
+        "isConsentedData": { "type": "boolean" },
+        "ownerId": { "type": "string" }
+      },
+      "required": ["id", "title", "type", "amount", "ownerId"]
+    },
+    "ConsentSource": {
+      "title": "ConsentSource",
+      "description": "Account Aggregator and consented data source status",
+      "type": "object",
+      "properties": {
+        "sourceId": { "type": "string" },
+        "status": { "type": "string", "enum": ["active", "revoked", "pending"] },
+        "ownerId": { "type": "string" }
+      },
+      "required": ["sourceId", "status", "ownerId"]
+    },
+    "Dispute": {
+      "title": "Dispute",
+      "description": "User metric dispute and resolution log",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "metricName": { "type": "string" },
+        "claimedValue": { "type": "string" },
+        "reason": { "type": "string" },
+        "status": { "type": "string", "enum": ["resolved", "under-review", "submitted"] },
+        "ownerId": { "type": "string" }
+      },
+      "required": ["id", "metricName", "reason", "ownerId"]
+    },
+    "AuditLog": {
+      "title": "AuditLog",
+      "description": "Immutable compliance and zero-bias audit trail entry",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "action": { "type": "string" },
+        "details": { "type": "string" },
+        "zeroDemographicVerified": { "type": "boolean" }
+      },
+      "required": ["userId", "action", "zeroDemographicVerified"]
+    },
+    "ChatMessage": {
+      "title": "ChatMessage",
+      "description": "Conversation message with FinShield AI financial coach",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "profileId": { "type": "string" },
+        "sender": { "type": "string", "enum": ["user", "ai"] },
+        "text": { "type": "string" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["userId", "sender", "text"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "entity": "User",
+      "description": "User root document"
+    },
+    "users/{userId}/profiles/{profileId}": {
+      "entity": "Profile",
+      "description": "User financial profiles"
+    },
+    "users/{userId}/transactions/{txId}": {
+      "entity": "Transaction",
+      "description": "Cash flow records"
+    },
+    "users/{userId}/consent_sources/{sourceId}": {
+      "entity": "ConsentSource",
+      "description": "Consented data feeds"
+    },
+    "users/{userId}/disputes/{disputeId}": {
+      "entity": "Dispute",
+      "description": "Credit and data disputes"
+    },
+    "users/{userId}/audit_trail/{auditId}": {
+      "entity": "AuditLog",
+      "description": "Audit trails"
+    },
+    "users/{userId}/coaching_sessions/{sessionId}": {
+      "entity": "ChatMessage",
+      "description": "AI Coach messages"
+    }
+  }
+}

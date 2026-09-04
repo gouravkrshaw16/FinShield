@@ -1,0 +1,8 @@
+{
+  "name": "FinShield - Financial Health & Alternative Credit Assistant",
+  "description": "Consent-based alternative credit readiness, cash flow and savings capacity analyzer, explainable score engine, non-credit alternatives, and public welfare scheme matching for students and micro-entrepreneurs.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
