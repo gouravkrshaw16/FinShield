@@ -10,6 +10,9 @@ The application combines financial profile analysis, explainable
 scoring, cash-flow insights, debt simulation, AI-powered financial
 guidance, and alternative credit information into a single platform.
 
+## Website Link:
+https://finshield-sih.web.app
+
 ## ✨ Features
 
 -   **Financial Health Score** --- Generates an easy-to-understand
@@ -28,16 +31,8 @@ guidance, and alternative credit information into a single platform.
     options for users who may have limited traditional credit history.
 -   **Public Schemes Directory** --- Provides information about relevant
     public financial schemes and assistance programs.
--   **Consent Center** --- Provides controls for managing user consent
-    and data-sharing preferences.
--   **Dispute Support** --- Includes functionality for raising and
-    managing score-related disputes.
 -   **Report Export** --- Allows financial assessment information to be
     prepared for reporting/export.
--   **Firebase Integration** --- Uses Firebase services for
-    authentication and data storage.
--   **Responsive Interface** --- Designed for a modern web experience
-    across different screen sizes.
 
 ## 🛠️ Tech Stack
 
@@ -182,19 +177,6 @@ Or:
 npm run build
 ```
 
-## 🔐 Security
-
-FinShield is designed to work with user financial information. When
-deploying or modifying the application:
-
--   Never expose Gemini API secrets in client-side code.
--   Never commit `.env` files containing real secrets.
--   Never commit Firebase service-account/private-key files.
--   Keep Firestore Security Rules properly configured.
--   Use appropriate authentication and authorization controls.
--   Restrict API keys where appropriate.
--   Review data handling and consent requirements before production
-    deployment.
 
 ## 🎯 Project Vision
 
